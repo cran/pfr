@@ -1,6 +1,6 @@
-5a5673a8893e7bdaabaa3a3e48c397bb *DESCRIPTION
+ee76702d8602560cc83238d96e703e49 *DESCRIPTION
 3ed17ca8c42277c6ec68123ab331b271 *NAMESPACE
-13aee51c233c267f5368c419dabc613b *NEWS.md
+4187bf71d7053d4862392e625a10bad0 *NEWS.md
 207eef85e567f3bc22ab563f4409b23e *R/compile.R
 18cdcb5c3ed2e2c71027a4aaa6fc7d1a *R/cpptemplate_auxpf_export.R
 9b804c96cc467ef8a2c06550f9a92dd8 *R/cpptemplate_auxpf_header.R
@@ -24,10 +24,10 @@ d69067b69fbc2ce5af79f10913973e76 *R/plugin.R
 a540700f08262f0d23ad8b28f1287fa4 *R/template_creators.R
 4070219b1995f5811163f2f12c6b56d8 *R/using_examples.R
 9e58d1b6b144b791f995542623619678 *README.md
-f2e3c6da63ec1963108811535bd5dd45 *build/vignette.rds
-8f2febd70983b937ba808c0cbfd9f221 *inst/doc/my-vignette.R
-8fed26738d6017e477d8d5c5262a89b1 *inst/doc/my-vignette.Rmd
-e83d9a7f6861d1bbf60c7c9a3c7ee51a *inst/doc/my-vignette.html
+3d9f43ec6cb359ea075c058fd713c596 *build/vignette.rds
+beb2feebd5c983de762e5801c8271692 *inst/doc/my-vignette.R
+14d43453bfa46ac7d80f26345d65356e *inst/doc/my-vignette.Rmd
+12075c98b556d2b9afc99b54a6f0c191 *inst/doc/my-vignette.html
 75cb5ddaf1ebbeaae65247ef299d4e17 *inst/include/pf/auxiliary_pf.h
 9e9e8891018275606db3a97ba50ecd16 *inst/include/pf/bootstrap_filter.h
 08bb65b0772927253aaacd159bfea26a *inst/include/pf/bootstrap_filter_with_covariates.h
@@ -44,7 +44,7 @@ f2571a10951f16bdfafc4c6e6a58317a *man/buildModelFuncs.Rd
 17b2e80e4b5dba0a2a5a4966a610386e *vignettes/mean_factor_msvol_apf.cpp
 dd2fbb2b9a08a381801258873202dd73 *vignettes/mean_factor_msvol_apf.h
 415edaec43c2e01ea128bcb67838bc56 *vignettes/mean_factor_msvol_apf_export.cpp
-8fed26738d6017e477d8d5c5262a89b1 *vignettes/my-vignette.Rmd
+14d43453bfa46ac7d80f26345d65356e *vignettes/my-vignette.Rmd
 874ce992f5726be4b89f512f649df4b7 *vignettes/ssm_diagram_1-1.png
 bc4c64d51fbc5ffc5c5fb1a24283262b *vignettes/svol_leverage_bswc.cpp
 0a1e20f018a257750a079452c8624104 *vignettes/svol_leverage_bswc.h

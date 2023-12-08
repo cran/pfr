@@ -14,89 +14,103 @@
 
 <title>Getting Started with pfR</title>
 
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -105,13 +119,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -122,6 +143,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
 
 <style type="text/css">body {
 background-color: #fff;
@@ -321,47 +364,84 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <div id="the-big-picture" class="section level2">
 <h2>The Big Picture</h2>
-<p>In <code>pf</code>, the c++ library, each model/algorithm pair gets its own class. Writing this class’s methods defines a time series model, and the base class you choose to inherit from selects the particle filter that will be used. This typically requires writing two files: a c++ header file that declares the class, and a c++ source file that implements all the model specifics.</p>
-<p>In <code>pfR</code>, the R package, there is one extra step. In addition to the header and source file, there is some additional c++ code that helps you to use everything from within an R session.</p>
-<p>The beauty of this is that <code>pf</code> files are usable in <code>pfR</code>, and the majority of <code>pfR</code> code is usable in a c++ program. The downside to this is that R programmers will need a passing familiarity with c++–fortunately most of the c++ code is boilerplate, and <code>pfR</code> has a function that will write most of it for you.</p>
+<p>In <code>pf</code>, the c++ library, each model/algorithm pair gets
+its own class. Writing this class’s methods defines a time series model,
+and the base class you choose to inherit from selects the particle
+filter that will be used. This typically requires writing two files: a
+c++ header file that declares the class, and a c++ source file that
+implements all the model specifics.</p>
+<p>In <code>pfR</code>, the R package, there is one extra step. In
+addition to the header and source file, there is some additional c++
+code that helps you to use everything from within an R session.</p>
+<p>The beauty of this is that <code>pf</code> files are usable in
+<code>pfR</code>, and the majority of <code>pfR</code> code is usable in
+a c++ program. The downside to this is that R programmers will need a
+passing familiarity with c++–fortunately most of the c++ code is
+boilerplate, and <code>pfR</code> has a function that will write most of
+it for you.</p>
 </div>
 <div id="examples" class="section level2">
 <h2>Examples</h2>
-<p>Before we do any specific example, we’ll have to define a state space model, and choose some notation.</p>
-<p>For <span class="math inline">\(t =1, \ldots, T\)</span>, let <span class="math inline">\(\{y_t\}\)</span> be your observed time series, <span class="math inline">\(\{x_t\}\)</span> be some set of hidden states, and (optional) <span class="math inline">\(\{z_t\}\)</span> be a sequence of inputs you have at your disposal to help better predict each <span class="math inline">\(y_t\)</span>.</p>
-<p>Defining a state-space model requires defining three kinds of distributions:</p>
+<p>Before we do any specific example, we’ll have to define a state space
+model, and choose some notation.</p>
+<p>For <span class="math inline">\(t =1, \ldots, T\)</span>, let <span class="math inline">\(\{y_t\}\)</span> be your observed time series,
+<span class="math inline">\(\{x_t\}\)</span> be some set of hidden
+states, and (optional) <span class="math inline">\(\{z_t\}\)</span> be a
+sequence of inputs you have at your disposal to help better predict each
+<span class="math inline">\(y_t\)</span>.</p>
+<p>Defining a state-space model requires defining three kinds of
+distributions:</p>
 <ul>
-<li><span class="math inline">\(g(y_t \mid x_t, z_t, \theta)\)</span> the observation distributions,</li>
-<li><span class="math inline">\(f(x_t \mid x_{t-1}, z_t, \theta)\)</span> the state transition distributions, and</li>
-<li><span class="math inline">\(\mu(x_t \mid z_t, \theta)\)</span> an initial state distribution.</li>
+<li><span class="math inline">\(g(y_t \mid x_t, z_t, \theta)\)</span>
+the observation distributions,</li>
+<li><span class="math inline">\(f(x_t \mid x_{t-1}, z_t,
+\theta)\)</span> the state transition distributions, and</li>
+<li><span class="math inline">\(\mu(x_t \mid z_t, \theta)\)</span> an
+initial state distribution.</li>
 </ul>
-<p>In the diagram below, circle nodes correspond with observed variables, square nodes represent hidden/latent variables, and arrows demonstrate how conditional dependence relationships (the dotted lines convey that they are optional).</p>
+<p>In the diagram below, circle nodes correspond with observed
+variables, square nodes represent hidden/latent variables, and arrows
+demonstrate how conditional dependence relationships (the dotted lines
+convey that they are optional).</p>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAvUAAAGlCAIAAAD1Rp6wAAAAinpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjaVY7LDcNACETvVJES+LOUY1leyR2k/LDGiuV3gAGhYeD4nhM+C0IFtRie7lhoavJWYmAjiMRIq1dt7i5Uimu8ZxBu4TkC9TlUxRcmPnyGRrj57juXOx8iVyVBuK6W2YqSj9E07Bfy3m/2z9ZJfgDGLUdzdhWmAAAKBmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNC40LjAtRXhpdjIiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249Ijc1NyIKICAgZXhpZjpQaXhlbFlEaW1lbnNpb249IjQyMSIKICAgdGlmZjpJbWFnZVdpZHRoPSI3NTciCiAgIHRpZmY6SW1hZ2VIZWlnaHQ9IjQyMSIKICAgdGlmZjpPcmllbnRhdGlvbj0iMSIvPgogPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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" width="100%" /></p>
 <div id="example-1-univariate-stochastic-volatility-with-leverage" class="section level3">
 <h3>Example 1: Univariate Stochastic Volatility with Leverage</h3>
-<p>Here’s a state space model from <span class="citation">Harvey and Shephard (1996)</span> <span class="citation">Yu (2005)</span> that can help us understand a segment of univariate financial returns data <span class="math inline">\(y_1, \ldots y_T\)</span>.</p>
+<p>Here’s a state space model from <span class="citation">Harvey and
+Shephard (1996)</span> <span class="citation">Yu (2005)</span> that can
+help us understand a segment of univariate financial returns data <span class="math inline">\(y_1, \ldots y_T\)</span>.</p>
 <p><span class="math display">\[
 \begin{gather*}
 y_t = \exp(x_t/2)\epsilon_t, \hspace{10mm} t = 1, \ldots, T \\
-  x_{t+1} = \mu + \phi(x_t - \mu) + \eta_t, \hspace{10mm} t = 1, \ldots, T-1 \\
+  x_{t+1} = \mu + \phi(x_t - \mu) + \eta_t, \hspace{10mm} t = 1, \ldots,
+T-1 \\
 x_1 \sim \mathcal{N}(\mu, \sigma^2 / (1-\phi^2)) \\
 \begin{bmatrix}
 \epsilon_t \\
 \eta_t
 \end{bmatrix}
-\sim 
+\sim
 \mathcal{N}(\boldsymbol{0}, \boldsymbol{\Sigma})
 \end{gather*}
 \]</span></p>
-<p><span class="math inline">\(\mathcal{N}(\cdot, \cdot)\)</span> denotes a (possibly multivariate) Gaussian distribution, <span class="math inline">\(-1 &lt; \rho &lt; 1\)</span> is the leverage parameter (typically negative for equities), and</p>
+<p><span class="math inline">\(\mathcal{N}(\cdot, \cdot)\)</span>
+denotes a (possibly multivariate) Gaussian distribution, <span class="math inline">\(-1 &lt; \rho &lt; 1\)</span> is the leverage
+parameter (typically negative for equities), and</p>
 <p><span class="math display">\[
-\boldsymbol{\Sigma} = \begin{bmatrix}1  &amp; \rho\sigma \\ \rho\sigma &amp; \sigma^2 \end{bmatrix}.
+\boldsymbol{\Sigma} = \begin{bmatrix}1  &amp; \rho\sigma \\ \rho\sigma
+&amp; \sigma^2 \end{bmatrix}.
 \]</span></p>
-<p>The interpretation of <span class="math inline">\(x_t\)</span> is the (logarithm of) the volatility of the returns and our covariate will be <span class="math inline">\(z_t = y_{t-1}\)</span>. Writing this model in our notation yields</p>
+<p>The interpretation of <span class="math inline">\(x_t\)</span> is the
+(logarithm of) the volatility of the returns and our covariate will be
+<span class="math inline">\(z_t = y_{t-1}\)</span>. Writing this model
+in our notation yields</p>
 <ul>
-<li><span class="math inline">\(g(y_t \mid x_t, z_t, \theta) = \mathcal{N}(0, \exp[x_t])\)</span>,</li>
-<li><span class="math inline">\(f(x_t \mid x_{t-1}, z_t, \theta) = \mathcal{N}(\mu + \phi(x_t - \mu) + \rho\sigma y_{t-1}\exp(-x_t/2), \sigma^2(1 - \rho^2))\)</span>, and</li>
-<li><span class="math inline">\(\mu(x_t \mid z_t, \theta) = \mathcal{N}(\mu, \sigma^2 / (1-\phi^2))\)</span> .</li>
+<li><span class="math inline">\(g(y_t \mid x_t, z_t, \theta) =
+\mathcal{N}(0, \exp[x_t])\)</span>,</li>
+<li><span class="math inline">\(f(x_t \mid x_{t-1}, z_t, \theta) =
+\mathcal{N}(\mu + \phi(x_t - \mu) + \rho\sigma y_{t-1}\exp(-x_t/2),
+\sigma^2(1 - \rho^2))\)</span>, and</li>
+<li><span class="math inline">\(\mu(x_t \mid z_t, \theta) =
+\mathcal{N}(\mu, \sigma^2 / (1-\phi^2))\)</span> .</li>
 </ul>
 <!-- $$ -->
 <!-- \begin{bmatrix} -->
@@ -384,102 +464,122 @@ x_1 \sim \mathcal{N}(\mu, \sigma^2 / (1-\phi^2)) \\
 <!-- \right) -->
 <!-- $$ -->
 <!-- means -->
-<p><span class="math inline">\(f(x_t \mid x_{t-1}, z_t, \theta)\)</span> is univariate normal with mean <span class="math inline">\(\mu + \phi(x_t - \mu) + \rho\sigma y_{t-1}\exp[-x_t/2]\)</span> and variance <span class="math inline">\(\sigma^2(1 - \rho^2)\)</span>.</p>
+<p><span class="math inline">\(f(x_t \mid x_{t-1}, z_t, \theta)\)</span>
+is univariate normal with mean <span class="math inline">\(\mu +
+\phi(x_t - \mu) + \rho\sigma y_{t-1}\exp[-x_t/2]\)</span> and variance
+<span class="math inline">\(\sigma^2(1 - \rho^2)\)</span>.</p>
 </div>
 <div id="coding-it-up" class="section level3">
 <h3>Coding It Up</h3>
-<p>Suppose that the algorithm we want is a bootstrap filter with covariates. Our next step is writing all the c++ code for this model and this algorithm. Here is the bit of code that will do most of the work for you. The first argument is the prefix for all of your filenames and will be used throughout the rest of your work.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(pfr)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">createPFCPPTemplates</span>(<span class="st">&quot;svol_leverage&quot;</span>, <span class="st">&quot;BSWC&quot;</span>, <span class="dt">fileDir =</span> <span class="st">&quot;./&quot;</span>)</a></code></pre></div>
-<p>This will save three files to your desktop–<code>svol_leverage_bswc.h</code>, <code>svol_leverage_bswc.cpp</code>, and <code>svol_leverage_bswc_export.cpp</code>–and then open them in an RStudio session. You will notice some <code>TODO</code>s in the files. Consider these as requests for you to fill in the details of your model.</p>
-<p>After you are finished editing them, they should like something like <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/svol_leverage_bswc.h">this</a>, <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/svol_leverage_bswc.cpp">this</a>, and <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/svol_leverage_bswc_export.cpp">this</a>.</p>
+<p>Suppose that the algorithm we want is a bootstrap filter with
+covariates. Our next step is writing all the c++ code for this model and
+this algorithm. Here is the bit of code that will do most of the work
+for you. The first argument is the prefix for all of your filenames and
+will be used throughout the rest of your work.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(pfr)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">createPFCPPTemplates</span>(<span class="st">&quot;svol_leverage&quot;</span>, <span class="st">&quot;BSWC&quot;</span>, <span class="at">fileDir =</span> <span class="st">&quot;./&quot;</span>)</span></code></pre></div>
+<p>This will save three files to your
+desktop–<code>svol_leverage_bswc.h</code>,
+<code>svol_leverage_bswc.cpp</code>, and
+<code>svol_leverage_bswc_export.cpp</code>–and then open them in an
+RStudio session. You will notice some <code>TODO</code>s in the files.
+Consider these as requests for you to fill in the details of your
+model.</p>
+<p>After you are finished editing them, they should like something like
+<a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/svol_leverage_bswc.h">this</a>,
+<a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/svol_leverage_bswc.cpp">this</a>,
+and <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/svol_leverage_bswc_export.cpp">this</a>.</p>
 </div>
 <div id="compiling-the-code" class="section level3">
 <h3>Compiling The Code</h3>
 <p>To compile the code you just wrote, simply run</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">svol_lev &lt;-<span class="st"> </span><span class="kw">buildModelFuncs</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;svol_leverage&quot;</span>)</a></code></pre></div>
-<p><code>svol_lev</code> is an Rcpp Module <span class="citation">Eddelbuettel (2013)</span> object that holds all the functions that allow you to use your model. You can call these functions like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">svol_lev<span class="op">$</span><span class="kw">svol_leverage_bswc_approx_LL</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="kw">c</span>(.<span class="dv">9</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">-.2</span>))</a>
-<a class="sourceLine" id="cb3-2" title="2">svol_lev<span class="op">$</span><span class="kw">svol_leverage_bswc_approx_filt</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="kw">c</span>(.<span class="dv">9</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">-.2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>svol_lev <span class="ot">&lt;-</span> <span class="fu">buildModelFuncs</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;svol_leverage&quot;</span>)</span></code></pre></div>
+<p><code>svol_lev</code> is an Rcpp Module <span class="citation">Eddelbuettel (2013)</span> object that holds all the
+functions that allow you to use your model. You can call these functions
+like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>svol_lev<span class="sc">$</span><span class="fu">svol_leverage_bswc_approx_LL</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="fu">c</span>(.<span class="dv">9</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="sc">-</span>.<span class="dv">2</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>svol_lev<span class="sc">$</span><span class="fu">svol_leverage_bswc_approx_filt</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="fu">c</span>(.<span class="dv">9</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="sc">-</span>.<span class="dv">2</span>))</span></code></pre></div>
 </div>
 <div id="example-2-a-factor-multivariate-stochastic-volatility-model" class="section level3">
 <h3>Example 2: A Factor Multivariate Stochastic Volatility Model</h3>
-<p>Here’s another state space model from <span class="citation">Chib, Omori, and Asai (2009)</span> that can handle multivariate returns data <span class="math inline">\(\mathbf{y}_1, \mathbf{y}_2, \ldots\)</span>.</p>
+<p>Here’s another state space model from <span class="citation">Chib,
+Omori, and Asai (2009)</span> that can handle multivariate returns data
+<span class="math inline">\(\mathbf{y}_1, \mathbf{y}_2,
+\ldots\)</span>.</p>
 <p><span class="math display">\[
 \begin{gather*}
-\mathbf{y}_t = \mathbf{B} \mathbf{f}_t + \mathbf{V}_t^{1/2} \boldsymbol{\epsilon}_t, \hspace{10mm} \boldsymbol{\epsilon}_t \sim \mathcal{N}_p(\boldsymbol{0}, \mathbf{I}) \\
-\mathbf{f}_t =  \mathbf{D}_t^{1/2} \boldsymbol{\gamma}_t, \hspace{10mm} \boldsymbol{\gamma}_t \sim \mathcal{N}_q(\boldsymbol{0}, \mathbf{I}) \\
-\mathbf{x}_{t+1} = \boldsymbol{\mu} + \boldsymbol{\Phi} (\mathbf{x}_{t} - \boldsymbol{\mu}) + \boldsymbol{\eta}_t,  \hspace{10mm} \boldsymbol{\eta}_t \sim \mathcal{N}_{p+q}(\boldsymbol{0}, \boldsymbol{\Sigma} ) \\\\
-\mathbf{x}_1 \sim \mathcal{N}(\boldsymbol{\mu},  \text{diag}(\sigma^2_1/(1-\phi_1^2), \ldots, \sigma^2_{p+q}/(1-\phi_{p+q}^2)  ) ) \\
+\mathbf{y}_t = \mathbf{B} \mathbf{f}_t + \mathbf{V}_t^{1/2}
+\boldsymbol{\epsilon}_t, \hspace{10mm} \boldsymbol{\epsilon}_t \sim
+\mathcal{N}_p(\boldsymbol{0}, \mathbf{I}) \\
+\mathbf{f}_t =  \mathbf{D}_t^{1/2} \boldsymbol{\gamma}_t, \hspace{10mm}
+\boldsymbol{\gamma}_t \sim \mathcal{N}_q(\boldsymbol{0}, \mathbf{I}) \\
+\mathbf{x}_{t+1} = \boldsymbol{\mu} + \boldsymbol{\Phi} (\mathbf{x}_{t}
+- \boldsymbol{\mu}) + \boldsymbol{\eta}_t,  \hspace{10mm}
+\boldsymbol{\eta}_t \sim \mathcal{N}_{p+q}(\boldsymbol{0},
+\boldsymbol{\Sigma} ) \\\\
+\mathbf{x}_1 \sim
+\mathcal{N}(\boldsymbol{\mu},  \text{diag}(\sigma^2_1/(1-\phi_1^2),
+\ldots, \sigma^2_{p+q}/(1-\phi_{p+q}^2)  ) ) \\
 \end{gather*}
 \]</span></p>
 <p>where <span class="math display">\[
 \begin{gather*}
 \mathbf{V}_t = \text{diag}[\exp(x_{1,t}), \ldots, \exp(x_{p,t}) ], \\
-\mathbf{D}_t = \text{diag}[\exp(x_{p+1,t}), \ldots, \exp(x_{p+q,t}) ], \\
+\mathbf{D}_t = \text{diag}[\exp(x_{p+1,t}), \ldots, \exp(x_{p+q,t}) ],
+\\
 \boldsymbol{\Phi} = \text{diag}(\phi_1, \ldots, \phi_{p+q}), \\
 \boldsymbol{\Sigma} = \text{diag}(\sigma^2_1, \ldots, \sigma^2_{p+q}) ,
 \end{gather*}
 \]</span></p>
-<p><span class="math inline">\(p\)</span> is the number of observations, and <span class="math inline">\(q\)</span> is the number of factors.</p>
-<p>Suppose you want to use an auxiliary particle filter <span class="citation">Pitt and Shephard (1999)</span> for this model. The c++ file templates are generated with</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">createPFCPPTemplates</span>(<span class="st">&quot;mean_factor_msvol&quot;</span>, <span class="st">&quot;APF&quot;</span>, <span class="dt">fileDir =</span> <span class="st">&quot;./&quot;</span>)</a></code></pre></div>
-<p>The finished files look like the ones location <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/mean_factor_msvol_apf.cpp">here</a>, <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/mean_factor_msvol_apf.h">here</a> and <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/mean_factor_msvol_apf_export.cpp">here</a>. That code is compiled with</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">fsvol &lt;-<span class="st"> </span><span class="kw">buildModelFuncs</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;mean_factor_msvol&quot;</span>)</a></code></pre></div>
-<p>and the (approximate) log-likelihood and filtering functions are run with</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">paramEst &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.22</span>, <span class="co">#B</span></a>
-<a class="sourceLine" id="cb6-2" title="2">              <span class="fl">-1.17</span>, <span class="fl">-.01</span>, <span class="fl">.08</span>, <span class="co">#mu</span></a>
-<a class="sourceLine" id="cb6-3" title="3">              <span class="fl">.85</span>, <span class="fl">.84</span>, <span class="fl">.81</span>, <span class="co">#Phi</span></a>
-<a class="sourceLine" id="cb6-4" title="4">              <span class="fl">3.7</span>, <span class="fl">3.4</span>, <span class="fl">3.49</span>) <span class="co">#Sigma</span></a>
-<a class="sourceLine" id="cb6-5" title="5">fakeData &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">50</span>), <span class="dt">ncol=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb6-6" title="6">fsvol<span class="op">$</span><span class="kw">mean_factor_msvol_apf_approx_LL</span>(fakeData, paramEst)</a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; [1] -89.94638</span></a>
-<a class="sourceLine" id="cb6-8" title="8">fsvol<span class="op">$</span><span class="kw">mean_factor_msvol_apf_approx_filt</span>(fakeData, paramEst)</a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt;              [,1]         [,2]        [,3]</span></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt;  [1,]  0.03261862 -0.970720992  0.24047007</span></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;  [2,] -0.56291557 -0.429280766 -0.68059320</span></a>
-<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt;  [3,] -0.31394257 -0.361205156 -0.99067962</span></a>
-<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt;  [4,]  0.26087541  0.290289586 -0.78346761</span></a>
-<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt;  [5,] -0.25889175 -0.344373496 -0.44607483</span></a>
-<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;  [6,]  0.08245840  0.322470380 -0.35662178</span></a>
-<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;  [7,] -0.77041323  0.446704144  0.02363530</span></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt;  [8,] -0.64331942 -0.332305347 -0.84306623</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;  [9,]  0.28194307 -0.587307658 -0.44249525</span></a>
-<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt; [10,]  0.47798854 -0.113036992 -1.03660649</span></a>
-<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; [11,]  0.45021727  0.463017820 -0.42326052</span></a>
-<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; [12,] -0.26031511 -0.394632641 -0.52706602</span></a>
-<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; [13,] -0.58278337  0.607046365 -1.07860209</span></a>
-<a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt; [14,]  0.26011092 -0.345376029 -0.06379589</span></a>
-<a class="sourceLine" id="cb6-24" title="24"><span class="co">#&gt; [15,]  1.40747447  0.016612216 -0.80841996</span></a>
-<a class="sourceLine" id="cb6-25" title="25"><span class="co">#&gt; [16,]  0.46709078  0.008728654 -0.67431130</span></a>
-<a class="sourceLine" id="cb6-26" title="26"><span class="co">#&gt; [17,] -0.59322524  0.149779476 -0.84381043</span></a>
-<a class="sourceLine" id="cb6-27" title="27"><span class="co">#&gt; [18,] -1.42644179  0.877222363  0.15556177</span></a>
-<a class="sourceLine" id="cb6-28" title="28"><span class="co">#&gt; [19,]  0.31614599 -0.068307278 -0.22909904</span></a>
-<a class="sourceLine" id="cb6-29" title="29"><span class="co">#&gt; [20,]  0.40058225 -0.159096204 -0.23812729</span></a>
-<a class="sourceLine" id="cb6-30" title="30"><span class="co">#&gt; [21,] -0.33960485 -0.844145207  0.28869180</span></a>
-<a class="sourceLine" id="cb6-31" title="31"><span class="co">#&gt; [22,] -1.68728856 -1.169379766 -1.10366456</span></a>
-<a class="sourceLine" id="cb6-32" title="32"><span class="co">#&gt; [23,]  0.01395749 -0.081307932 -0.23821310</span></a>
-<a class="sourceLine" id="cb6-33" title="33"><span class="co">#&gt; [24,]  2.16373443  0.645168279 -0.39859652</span></a>
-<a class="sourceLine" id="cb6-34" title="34"><span class="co">#&gt; [25,]  0.90056727  0.652722863  0.05360699</span></a></code></pre></div>
+<p><span class="math inline">\(p\)</span> is the number of observations,
+and <span class="math inline">\(q\)</span> is the number of factors.</p>
+<p>Suppose you want to use an auxiliary particle filter <span class="citation">Pitt and Shephard (1999)</span> for this model. The c++
+file templates are generated with</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">createPFCPPTemplates</span>(<span class="st">&quot;mean_factor_msvol&quot;</span>, <span class="st">&quot;APF&quot;</span>, <span class="at">fileDir =</span> <span class="st">&quot;./&quot;</span>)</span></code></pre></div>
+<p>The finished files look like the ones location <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/mean_factor_msvol_apf.cpp">here</a>,
+<a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/mean_factor_msvol_apf.h">here</a>
+and <a href="https://github.com/tbrown122387/pfR/blob/main/vignettes/mean_factor_msvol_apf_export.cpp">here</a>.
+That code is compiled with</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>fsvol <span class="ot">&lt;-</span> <span class="fu">buildModelFuncs</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;mean_factor_msvol&quot;</span>)</span></code></pre></div>
+<p>and the (approximate) log-likelihood and filtering functions are run
+with</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>paramEst <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.22</span>, <span class="co">#B</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>              <span class="sc">-</span><span class="fl">1.17</span>, <span class="sc">-</span>.<span class="dv">01</span>, .<span class="dv">08</span>, <span class="co">#mu</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>              .<span class="dv">85</span>, .<span class="dv">84</span>, .<span class="dv">81</span>, <span class="co">#Phi</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>              <span class="fl">3.7</span>, <span class="fl">3.4</span>, <span class="fl">3.49</span>) <span class="co">#Sigma</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>fakeData <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>), <span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>fsvol<span class="sc">$</span><span class="fu">mean_factor_msvol_apf_approx_LL</span>(fakeData, paramEst)</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>fsvol<span class="sc">$</span><span class="fu">mean_factor_msvol_apf_approx_filt</span>(fakeData, paramEst)</span></code></pre></div>
 </div>
 </div>
 <div id="references" class="section level2 unnumbered">
-<h2>References</h2>
-<div id="refs" class="references">
-<div id="ref-multiv_stochvol">
-<p>Chib, Siddhartha, Yasuhiro Omori, and Manabu Asai. 2009. “Multivariate Stochastic Volatility.” <em>CIRJE F-Series</em>, 365–400.</p>
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-multiv_stochvol" class="csl-entry">
+Chib, Siddhartha, Yasuhiro Omori, and Manabu Asai. 2009.
+<span>“Multivariate Stochastic Volatility.”</span> <em>CIRJE
+F-Series</em>, 365–400.
 </div>
-<div id="ref-rcpp">
-<p>Eddelbuettel, Dirk. 2013. <em>Seamless R and C++ Integration with Rcpp</em>. New York: Springer. <a href="https://doi.org/10.1007/978-1-4614-6868-4">https://doi.org/10.1007/978-1-4614-6868-4</a>.</p>
+<div id="ref-rcpp" class="csl-entry">
+Eddelbuettel, Dirk. 2013. <em>Seamless <span>R</span> and
+<span>C++</span> Integration with <span>Rcpp</span></em>. New York:
+Springer. <a href="https://doi.org/10.1007/978-1-4614-6868-4">https://doi.org/10.1007/978-1-4614-6868-4</a>.
 </div>
-<div id="ref-harvey_shephard">
-<p>Harvey, Andrew C., and Neil Shephard. 1996. “Estimation of an Asymmetric Stochastic Volatility Model for Asset Returns.” <em>Journal of Business &amp; Economic Statistics</em> 14 (4): 429–34. <a href="https://doi.org/10.1080/07350015.1996.10524672">https://doi.org/10.1080/07350015.1996.10524672</a>.</p>
+<div id="ref-harvey_shephard" class="csl-entry">
+Harvey, Andrew C., and Neil Shephard. 1996. <span>“Estimation of an
+Asymmetric Stochastic Volatility Model for Asset Returns.”</span>
+<em>Journal of Business &amp; Economic Statistics</em> 14 (4): 429–34.
+<a href="https://doi.org/10.1080/07350015.1996.10524672">https://doi.org/10.1080/07350015.1996.10524672</a>.
 </div>
-<div id="ref-apf">
-<p>Pitt, Michael K., and Neil Shephard. 1999. “Filtering via Simulation: Auxiliary Particle Filters.” <em>Journal of the American Statistical Association</em> 94 (446): 590–99. <a href="http://www.jstor.org/stable/2670179">http://www.jstor.org/stable/2670179</a>.</p>
+<div id="ref-apf" class="csl-entry">
+Pitt, Michael K., and Neil Shephard. 1999. <span>“Filtering via
+Simulation: Auxiliary Particle Filters.”</span> <em>Journal of the
+American Statistical Association</em> 94 (446): 590–99. <a href="http://www.jstor.org/stable/2670179">http://www.jstor.org/stable/2670179</a>.
 </div>
-<div id="ref-Yu">
-<p>Yu, Jun. 2005. “On Leverage in a Stochastic Volatility Model.” <em>Journal of Econometrics</em> 127 (2): 165–78. <a href="https://doi.org/https://doi.org/10.1016/j.jeconom.2004.08.002">https://doi.org/https://doi.org/10.1016/j.jeconom.2004.08.002</a>.</p>
+<div id="ref-Yu" class="csl-entry">
+Yu, Jun. 2005. <span>“On Leverage in a Stochastic Volatility
+Model.”</span> <em>Journal of Econometrics</em> 127 (2): 165–78.
+https://doi.org/<a href="https://doi.org/10.1016/j.jeconom.2004.08.002">https://doi.org/10.1016/j.jeconom.2004.08.002</a>.
 </div>
 </div>
 </div>

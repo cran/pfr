@@ -183,7 +183,7 @@ fsvol <- buildModelFuncs(".", "mean_factor_msvol")
 
 and the (approximate) log-likelihood and filtering functions are run with
 
-```{r}
+```{r, eval = FALSE}
 paramEst <- c(1.22, #B
               -1.17, -.01, .08, #mu
               .85, .84, .81, #Phi
